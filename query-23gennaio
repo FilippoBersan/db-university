@@ -1,0 +1,89 @@
+-QUERY CON GROUP BY 
+
+
+1. Contare quanti iscritti ci sono stati ogni anno
+
+SELECT COUNT(`id`) AS `numero_studenti`, YEAR(`enrolment_date`) AS `anno_iscrizione`
+FROM `students`
+GROUP BY YEAR(`enrolment_date`);
+
+
+2. Contare gli insegnanti che hanno lufficio nello stesso edificio
+
+SELECT COUNT(`id`) AS `numero_insegnanti`,(`office_address`) AS `nome_edificio`
+FROM `teachers`
+GROUP BY (`office_address`);
+
+
+3. Calcolare la media dei voti di ogni appello desame
+
+
+
+
+4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+
+
+-QUERY CON JOIN
+
+
+1. Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
+
+SELECT *
+FROM `degrees`
+INNER JOIN `students`
+ON `degrees`.`id` = `students`.`degree_id`
+WHERE `degrees`.`name` = "Corso di Laurea in Economia";
+
+
+2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
+
+
+SELECT *
+FROM `departments`
+INNER JOIN `degrees`
+ON `departments`.`id` = `degrees`.`name`
+WHERE `departments`.`name` = "Dipartimento di Neuroscienze";
+
+
+3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
+
+SELECT
+    `course_teacher`.`course_id` AS `corso_id`,
+    `course_teacher`.`teacher_id` AS `insegnante_id`
+FROM
+    `course_teacher`
+INNER JOIN `courses` AND `teachers`
+ON
+    `course_teacher`.`course_id` = `courses`.`id`
+WHERE
+    `courses`.`name`= "" AND `teachers`.`id = 44;
+
+    Errore
+
+
+
+
+--  4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
+
+
+Errore
+
+
+
+ 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+
+ Errore
+
+
+
+
+ 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+
+ SELECT *
+FROM `departments`
+INNER JOIN `teachers`
+ON `departments`.`id` = `teachers`.`id`
+WHERE `departments`.`name` = "Dipartimento di Matematica";
+ 
+ Errore
