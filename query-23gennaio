@@ -17,10 +17,16 @@ GROUP BY (`office_address`);
 
 3. Calcolare la media dei voti di ogni appello desame
 
-
+SELECT (`exam_id`) AS `id_esame`,AVG(`vote`) AS `media_voto`
+FROM `exam_student`
+GROUP BY (`exam_id`);
 
 
 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+SELECT COUNT(`id`) AS `id_corsi`,(`department_id`) AS `id_edificio`
+FROM `degrees`
+GROUP BY (`department_id`);
 
 
 
